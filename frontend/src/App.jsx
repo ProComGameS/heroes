@@ -1,35 +1,28 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import {createBrowserRouter, Link, RouterProvider} from 'react-router';
+import Home from './pages/Home';
+import HeroDetails from './pages/HeroDetails';
+import HeroFormPage from './pages/HeroFormPage';
+import './index.css';
+import './App.css';
 
-function App() {
-  const [count, setCount] = useState(0)
+const Header = () => (
+    <nav className="w-full bg-slate-800 text-white p-4 shadow-md flex justify-between items-center mb-6">
+        <Link to="/" className="text-xl font-bold tracking-widest">SUPERHEROES</Link>
+        <Link to="/heroes/new" className="bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded font-medium transition">Add New Hero</Link>
+    </nav>
+);
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+const router = createBrowserRouter([
+    { path: "/", element: <><Header /><Home /></> },
+    { path: "/heroes/:id", element: <><Header /><HeroDetails /></> },
+    { path: "/heroes/new", element: <><Header /><HeroFormPage /></> },
+    { path: "/heroes/edit/:id", element: <><Header /><HeroFormPage /></> },
+]);
+
+export default function App() {
+    return (
+        <div style={{ margin: "0", padding: "0", width: "100vw", minHeight: "100vh", display: "flex", flexDirection: "column", alignItems: "center" }}>
+            <RouterProvider router={router} />
+        </div>
+    );
 }
-
-export default App
