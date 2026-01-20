@@ -97,3 +97,10 @@ npm run dev
 cd backend
 npm run reset:superheroes
 ```
+
+
+**To Use Tests**
+```
+cd backend
+npm run jest
+```
