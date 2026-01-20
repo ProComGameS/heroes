@@ -5,7 +5,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
-    "reset:superheroes": "node src/scripts/resetDatabase.js"
+    "reset:superheroes": "node src/scripts/resetDatabase.js",
+    "jest": "cross-env NODE_ENV=test jest --coverage"
   },
   "keywords": [],
   "author": "",
@@ -20,5 +21,11 @@
     "pg-hstore": "^2.3.4",
     "sequelize": "^6.37.7",
     "umzug": "^3.8.2"
+  },
+  "devDependencies": {
+    "cross-env": "^10.1.0",
+    "jest": "^30.2.0",
+    "sequelize-mock": "^0.10.2",
+    "supertest": "^7.2.2"
   }
 }
